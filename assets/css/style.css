@@ -644,6 +644,71 @@ body::-webkit-scrollbar-thumb {
 }
 
 /*-----------------------------------*\
+  #HERO ANIMATIONS
+\*-----------------------------------*/
+
+/* Staggered Fade Up for Hero Content */
+.hero-content>*,
+.hero-banner {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease forwards;
+}
+
+.hero-content .section-subtitle {
+  animation-delay: 0.2s;
+}
+
+.hero-content .hero-title {
+  animation-delay: 0.4s;
+}
+
+.hero-content p {
+  animation-delay: 0.6s;
+}
+
+.hero-content .exp-list {
+  animation-delay: 0.8s;
+}
+
+.hero-content .slide-down-btn {
+  animation-delay: 1s;
+}
+
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Float Animation for Hero Image */
+.hero-banner img {
+  animation: floatImage 6s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Optional: Glitch text effect or simple color Pulse for Name */
+.hero-content .name {
+  display: inline-block;
+  color: var(--theme-color);
+  position: relative;
+}
+
+
+/*-----------------------------------*\
   #SKILLS
 \*-----------------------------------*/
 
@@ -1031,6 +1096,73 @@ textarea.input-field {
 
 
 
+
+/*-----------------------------------*\
+  #WAVES ANIMATION
+\*-----------------------------------*/
+
+.waves-container {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  background: var(--cultured);
+  /* Match the previous section background */
+  overflow: hidden;
+  line-height: 0;
+  /* Remove any gap */
+}
+
+.waves {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  margin-bottom: -7px;
+  /* Fix gap */
+  min-height: 100px;
+  max-height: 150px;
+}
+
+.parallax>use {
+  animation: move-forever 25s cubic-bezier(.55, .5, .45, .5) infinite;
+}
+
+.parallax>use:nth-child(1) {
+  animation-delay: -2s;
+  animation-duration: 7s;
+}
+
+.parallax>use:nth-child(2) {
+  animation-delay: -3s;
+  animation-duration: 10s;
+}
+
+.parallax>use:nth-child(3) {
+  animation-delay: -4s;
+  animation-duration: 13s;
+}
+
+.parallax>use:nth-child(4) {
+  animation-delay: -5s;
+  animation-duration: 20s;
+}
+
+@keyframes move-forever {
+  0% {
+    transform: translate3d(-90px, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(85px, 0, 0);
+  }
+}
+
+/* Mobile responsive for waves */
+@media (max-width: 768px) {
+  .waves {
+    height: 40px;
+    min-height: 40px;
+  }
+}
 
 /*-----------------------------------*\
   #FOOTER

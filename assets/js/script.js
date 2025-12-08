@@ -69,20 +69,8 @@ const scrollReveal = function () {
   for (let i = 0; i < revealElements.length; i++) {
     const element = revealElements[i];
     if (element.getBoundingClientRect().top < window.innerHeight / 1.15) {
-      // Staggered delay logic
-      // Check if it's already active to avoid re-triggering
       if (!element.classList.contains("active")) {
-        // Calculate a delay based on its index relative to the viewport or just a simple sequence?
-        // Since we loop all, we can just use a simple timeout if we wanted complex staggering.
-        // For now, let's keep it immediate but cleaner, or add a transition-delay via inline style?
-
-        // Let's add a small random or indexed delay if multiple trigger at once for a "natural" feel
-        // But strict indexing is better.
-        // Since CSS handles the transition duration, we just add the class.
-        // To make it "js animation" staggered:
-        setTimeout(() => {
-          element.classList.add("active");
-        }, (i % 5) * 100); // 100ms delay per item, resetting every 5 items
+        element.classList.add("active");
       }
     }
   }
@@ -94,149 +82,64 @@ window.addEventListener("load", scrollReveal);
 
 
 /**
- * 3D Tilt Effect
+ * Background Animations
  */
+const bgIconsContainer = document.getElementById("backgroundIcons");
 
+const icons = [
+  '<ion-icon name="shapes-outline"></ion-icon>',
+  '<ion-icon name="moon-outline"></ion-icon>',
+  '<ion-icon name="star-outline"></ion-icon>',
+  '<ion-icon name="heart-outline"></ion-icon>',
+  '<ion-icon name="code-slash-outline"></ion-icon>',
+  '<ion-icon name="logo-css3"></ion-icon>',
+  '<ion-icon name="logo-javascript"></ion-icon>',
+  '<ion-icon name="logo-html5"></ion-icon>',
+  '<ion-icon name="logo-react"></ion-icon>'
+];
 
-// const tiltElements = document.querySelectorAll("[data-tilt]");
+const animationClasses = ["float-rotate", "float-diagonal", "float-circular"];
 
-// const initTilt = function () {
-//   tiltElements.forEach(element => {
-//     // Add Glare Element
-//     const glare = document.createElement("div");
-//     glare.classList.add("card-glare");
-//     glare.style.position = "absolute";
-//     glare.style.top = "0";
-//     glare.style.left = "0";
-//     glare.style.width = "100%";
-//     glare.style.height = "100%";
-//     glare.style.borderRadius = "inherit";
-//     glare.style.background = "linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 100%)";
-//     glare.style.opacity = "0";
-//     glare.style.pointerEvents = "none";
-//     glare.style.zIndex = "4";
-//     glare.style.transition = "opacity 0.5s ease";
-//     element.appendChild(glare);
+function createBgIcons(count) {
+  if (!bgIconsContainer) return;
 
-//     element.addEventListener("mouseenter", function () {
-//       // Remove transition on enter for direct control
-//       // Keep box-shadow transition active if needed, but transform should be fast
-//       element.style.transition = "transform 0.1s ease, box-shadow 0.5s ease";
-//     });
+  for (let i = 0; i < count; i++) {
+    const iconWrapper = document.createElement("div");
+    iconWrapper.classList.add("bg-icon");
 
-//     element.addEventListener("mousemove", function (event) {
-//       const rect = element.getBoundingClientRect();
-//       const x = event.clientX - rect.left;
-//       const y = event.clientY - rect.top;
+    // Random icon
+    const iconHTML = icons[Math.floor(Math.random() * icons.length)];
+    iconWrapper.innerHTML = iconHTML;
 
-//       element.style.setProperty("--x", `${x}px`);
-//       element.style.setProperty("--y", `${y}px`);
+    // Random animation
+    const animClass = animationClasses[Math.floor(Math.random() * animationClasses.length)];
+    iconWrapper.classList.add(animClass);
 
-//       const multiplier = 20; // Maximum rotation in degrees
-//       const moveMultiplier = 15; // Maximum translation in pixels
+    // Random position
+    iconWrapper.style.left = Math.random() * 100 + "vw";
+    iconWrapper.style.top = Math.random() * 100 + "vh";
 
-//       const xRotate = multiplier * ((x - rect.width / 2) / rect.width);
-//       const yRotate = -multiplier * ((y - rect.height / 2) / rect.height);
+    // Random size
+    const size = Math.random() * 20 + 20 + "px"; // 20-40px
+    iconWrapper.style.fontSize = size;
+    iconWrapper.style.color = "var(--theme-color)";
 
-//       const xMove = moveMultiplier * ((x - rect.width / 2) / rect.width);
-//       const yMove = moveMultiplier * ((y - rect.height / 2) / rect.height);
+    // Random animation duration and delay
+    const duration = Math.random() * 10 + 10 + "s"; // 20-30s reduced to 10-20 for visibility
+    const delay = Math.random() * 5 + "s";
 
-//       // Apply Tilt, Scale, and Magnetic Move
-//       element.style.transform = `perspective(1000px) rotateX(${yRotate}deg) rotateY(${xRotate}deg) scale(1.05) translate(${xMove}px, ${yMove}px)`;
+    iconWrapper.style.animationDuration = duration;
+    iconWrapper.style.animationDelay = delay;
 
-//       // Apply Glare
-//       // Calculate opacity based on mouse position (more visible at top-left)
-//       const glareOpacity = 1 - (y / rect.height);
-//       glare.style.opacity = Math.max(0, Math.min(1, glareOpacity * 0.5));
-//       glare.style.transform = `translate(${x - rect.width / 2}px, ${y - rect.height / 2}px)`;
-//     });
+    // Random opacity (subtle)
+    iconWrapper.style.setProperty('--data-opacity', Math.random() * 0.2 + 0.05); // passed to CSS var if needed, or inline
+    iconWrapper.style.opacity = "0.1"; // Start low
 
-//     element.addEventListener("mouseleave", function () {
-//       // Smooth reset
-//       element.style.transition = "transform 0.5s ease, box-shadow 0.5s ease";
-//       element.style.transform = "perspective(1000px) rotateX(0) rotateY(0) scale(1) translate(0, 0)";
-//       glare.style.opacity = "0";
-//     });
-
-//     element.addEventListener("click", function (e) {
-//       // Create ripple element
-//       const ripple = document.createElement("span");
-//       ripple.classList.add("ripple");
-
-//       const rect = element.getBoundingClientRect();
-//       const size = Math.max(rect.width, rect.height);
-
-//       // Position ripple
-//       const x = e.clientX - rect.left - size / 2;
-//       const y = e.clientY - rect.top - size / 2;
-
-//       ripple.style.width = ripple.style.height = `${size}px`;
-//       ripple.style.left = `${x}px`;
-//       ripple.style.top = `${y}px`;
-
-//       element.appendChild(ripple);
-
-//       // Remove ripple after animation
-//       setTimeout(() => {
-//         ripple.remove();
-//       }, 600);
-//     });
-//   });
-// }
-
-
-
-/**
- * BACK TO TOP
- */
-
-const backTopBtn = document.querySelector("[data-back-top-btn]");
-
-window.addEventListener("scroll", function () {
-  if (window.scrollY > 100) {
-    backTopBtn.classList.add("active");
-  } else {
-    backTopBtn.classList.remove("active");
+    bgIconsContainer.appendChild(iconWrapper);
   }
-});
+}
 
-
-/**
- * TYPING EFFECT
- */
-
-const typingText = document.querySelector(".typing-text");
-if (typingText) {
-  const textOptions = JSON.parse(typingText.getAttribute('data-text-options'));
-  let optionIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  let typeSpeed = 100;
-
-  function type() {
-    const currentText = textOptions[optionIndex];
-    if (isDeleting) {
-      typingText.textContent = currentText.substring(0, charIndex - 1);
-      charIndex--;
-      typeSpeed = 50; // Faster deleting
-    } else {
-      typingText.textContent = currentText.substring(0, charIndex + 1);
-      charIndex++;
-      typeSpeed = 150; // Normal typing
-    }
-
-    if (!isDeleting && charIndex === currentText.length) {
-      isDeleting = true;
-      typeSpeed = 2000; // Pause at end
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      optionIndex = (optionIndex + 1) % textOptions.length;
-      typeSpeed = 500; // Pause before new word
-    }
-
-    setTimeout(type, typeSpeed);
-  }
-
-  // Start typing
-  setTimeout(type, 1000);
+// Check if we are on a large screen to enable these heavy animations
+if (window.innerWidth > 768) {
+  window.addEventListener("load", () => createBgIcons(15));
 }
