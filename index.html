@@ -10,12 +10,19 @@
   <!-- 
     - favicon
   -->
-
+<style>
+  
+</style>
 
   <!-- 
     - custom css link
   -->
   <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/wave.css">
+  <link rel="stylesheet" href="./assets/css/hero-animations.css">
+
+
+
 
   <!-- 
     - google font link
@@ -102,17 +109,23 @@
         
 
       <section class="section hero" id="home" aria-label="hero">
+        <div class="hero-shapes">
+          <div class="shape shape-1"></div>
+          <div class="shape shape-2"></div>
+          <div class="shape shape-3"></div>
+        </div>
         <div class="container">
 
           <figure class="hero-banner img-holder has-before" style="--width: 640; --height: 640;">
-            <img src="./assets/images/14503.png"  alt="Creative Frontend Developer" class="images">
+            <img src="./assets/images/14503.png"  alt="Creative Frontend Developer" class="images" data-reveal>
           </figure>
                    
           <div class="hero-content">
 
             <h3 class="section-subtitle">Hello, I'M <span class="name">INDHU MOHAN</span></h3>
 
-            <h1 class="h1 hero-title">Creative Frontend Developer</h1>
+            <h1 class="h1 hero-title">Creative <span class="typing-text" data-text-options='["Frontend Developer", "Web Designer"]'></span></h1>
+
             <p>Resolving design problems, building smart user interfaces and useful interactions, developing rich web applications and seamless web experiences.</p>
 <!-- 
             <ul class="hero-list">
@@ -139,108 +152,65 @@
             </ul>
 
             <a href="#portfolio" class="slide-down-btn" aria-label="scroll down">
-              <ion-icon name="arrow-down" aria-hidden="true"></ion-icon>
+              <div class="mouse">
+                <div class="wheel"></div>
+              </div>
             </a>
 
           </div>
 
         </div>
+        
+        
       </section>
-
-
-
-
-
       <!-- 
         - #PORTFOLIO
       -->
 
       <section class="section portfolio" id="portfolio" aria-label="portfolio">
-        <div class="container">
+           <h2 class="h2 section-title" style="margin-bottom: 10rem; margin-top: -5rem; margin-left: 10rem;">Selected Works</h2>
+           
+           <div class="card__container">
 
-          <!-- <p class="section-subtitle">Portfolio</p> -->
+            <div class="wrapper"> 
+              <div class="card-one reveal" data-reveal data-tilt>
+               <img src="assets/images/image copy 6.png" alt="image">
 
-          <h2 class="h2 section-title">Selected Works</h2>
-
-          <ul class="has-scrollbar">
-
-            <li class="scrollbar-item">
-              <div class="card">
-
-                <figure class="card-banner img-holder" style="--width: 600; --height: 675;">
-                  
-                    <a href="../desinic/index.html" target="_blank" rel="noopener noreferrer" class="image">
-                      <img src="./assets/images/image.png" width="600" height="675" loading="lazy" alt="Magic Art"
-                    class="img-cover" >
-                    </a>
-                </figure>
+               <div class="info">
+                  <h2>Portfolio </h2>
+                  <a href="../desinic/index.html" target="_blank">Read More</a>
+               </div>
               </div>
-            </li>
 
-            <li class="scrollbar-item">
-              <div class="card">
 
-                <figure class="card-banner img-holder" style="--width: 600; --height: 675;">
-                  
-                    <a href="../dprod/index.html" target="_blank" rel="noopener noreferrer" class="image">
-                      <img src="./assets/images/image copy.png" width="600" height="65" loading="lazy" alt="Bona Green"
-                    class="img-cover"></a>
-                </figure>
-              </div>
-            </li>
+            <div class="card-one reveal" data-reveal data-tilt>
+               <img src="assets/images/image copy.png" alt="image">
 
-            <li class="scrollbar-item">
-              <div class="card">
+               <div class="info">
+                  <h2>Portfolio </h2>
+                  <a href="../dprod/index.html" target="_blank">Read More</a>
+               </div>
+            </div>
 
-                <figure class="card-banner img-holder" style="--width: 600; --height: 675;">
+            <div class="card-one reveal" data-reveal data-tilt>
+               <img src="assets/images/image copy 2.png" alt="image">
 
-                    <a href="../woodex/index.html" target="_blank" rel="noopener noreferrer" class="image"> 
-                      <img src="./assets/images/image copy 2.png" width="600" height="675" loading="lazy" alt="Leo Dandora" class="img-cover"></a>
-                </figure>
-              </div>
-            </li>
+               <div class="info">
+                    <h2>Woodex</h2>
+                  <a href="../woodex/index.html" target="_blank">Read More</a>
+               </div>
+            </div>
 
-            <li class="scrollbar-item">
-              <div class="card">
+            <div class="card-one reveal" data-reveal data-tilt>
+               <img src="assets/images/image copy 4.png" alt="image" >
 
-                <figure class="card-banner img-holder" style="--width: 600; --height: 675;">
-                 
-                    <a href="../hailee-portfolio-website/index.html" target="_blank" rel="noopener noreferrer" class="image">
-                              <img src="./assets/images/image copy 3.png" width="600" height="675" loading="lazy" alt="Folio Grasia"
-                    class="img-cover">
-                    </a>
-                </figure>
-
-                
-              </div>
-            </li>
-
-      
-
-            <!-- <li class="scrollbar-item">
-              <div class="card">
-
-                <figure class="card-banner img-holder" style="--width: 600; --height: 675;">
-                  <img src="./assets/images/portfolio-6.jpg" width="600" height="675" loading="lazy" alt="Santa Onera"
-                    class="img-cover">
-                </figure>
-
-                <a href="#" class="card-content">
-
-                  <ion-icon name="arrow-forward-outline" aria-hidden="true"></ion-icon>
-
-                  <h3 class="h3 card-title">Santa Onera</h3>
-
-                  <p class="card-text">Image</p>
-
-                </a>
-
-              </div>
-            </li> -->
-
-          </ul>
-
-        </div>
+               <div class="info">
+                  <h2>Haliee Keys</h2>
+                  <a href="../hailee-portfolio-website/index.html" target="_blank">Read More</a>
+               </div>
+            </div>
+         </div>
+         </div>
       </section>
 
       <!-- 
@@ -441,59 +411,51 @@
         <div class="container">
 
 
-          <h2 class="h2 section-title">Recent work</h2>
-
-          <ul class="has-scrollbar">
-
-            <li class="scrollbar-item">
-              <div class="card news-card">
-
-                <figure class="card-banner img-holder" style="--width: 600; --height: 675;">
-                  <a href="../desinic/index.html" target="_blank" rel="noopener noreferrer" class="image">
-                      <img src="./assets/images/image.png" width="600" height="675" loading="lazy" alt="Magic Art"
-                    class="img-cover" >
-                    </a>
-                </figure>
-              </div>
-            </li>
-
-            <li class="scrollbar-item">
-              <div class="card news-card">
-
-                <figure class="card-banner img-holder" style="--width: 600; --height: 675;">
-                    <a href="../hailee-portfolio-website/index.html" target="_blank" rel="noopener noreferrer" class="image">
-                              <img src="./assets/images/image copy 3.png" width="600" height="675" loading="lazy" alt="Folio Grasia"
-                    class="img-cover">
-                    </a>
-                </figure>
-              </div>
-            </li>
-
-            <li class="scrollbar-item">
-              <div class="card news-card">
-
-                <figure class="card-banner img-holder" style="--width: 600; --height: 675;">
-                  <a href="../dprod/index.html" target="_blank" rel="noopener noreferrer" class="image">
-                      <img src="./assets/images/image copy.png" width="600" height="65" loading="lazy" alt="Bona Green"
-                    class="img-cover"></a>
-                </figure>
-              </div>
-            </li>
-
-            <li class="scrollbar-item">
-              <div class="card news-card">
-
-                <figure class="card-banner img-holder" style="--width: 600; --height: 675;">
-                 
-                    <a href="../woodex/index.html" target="_blank" rel="noopener noreferrer" class="image"> 
-                      <img src="./assets/images/image copy 2.png" width="600" height="675" loading="lazy" alt="Leo Dandora" class="img-cover"></a>
-                </figure>
-              </div>
-            </li>
-
-          </ul>
-
+       
         </div>
+        <div class="card__container">
+
+          <h2 class="h2 section-title" style="margin-bottom: 10rem; margin-top: -5rem; margin-left: 10rem;">Recent work</h2>
+
+            <div class="wrapper"> 
+              <div class="card-one reveal" data-reveal data-tilt>
+               <img src="assets/images/image copy 6.png" alt="image">
+
+               <div class="info">
+                  <h2>Portfolio </h2>
+                  <a href="#">Read More</a>
+               </div>
+              </div>
+
+
+            <div class="card-one reveal" data-reveal data-tilt>
+               <img src="assets/images/image copy.png" alt="image">
+
+               <div class="info">
+                  <h2>Portfolio </h2>
+                  <a href="#">Read More</a>
+               </div>
+            </div>
+
+            <div class="card-one reveal" data-reveal data-tilt>
+               <img src="assets/images/image copy 2.png" alt="image">
+
+               <div class="info">
+                    <h2>Woodex</h2>
+                  <a href="#">Read More</a>
+               </div>
+            </div>
+
+            <div class="card-one reveal" data-reveal data-tilt>
+               <img src="assets/images/image copy 4.png" alt="image" >
+
+               <div class="info">
+                  <h2>Haliee Keys</h2>
+                  <a href="#">Read More</a>
+               </div>
+            </div>
+         </div>
+         </div>
       </section>
 
 
@@ -584,6 +546,21 @@
   -->
 
   <footer class="footer">
+    <div class="waves-container">
+      <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+      viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+      <defs>
+      <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+      </defs>
+      <g class="parallax">
+      <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(0,0,0,0.7)" />
+      <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(0,0,0,0.5)" />
+      <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(0,0,0,0.3)" />
+      <use xlink:href="#gentle-wave" x="48" y="7" fill="#000" />
+      </g>
+      </svg>
+    </div>
+
     <div class="container">
 
       <p class="copyright">
@@ -632,8 +609,14 @@
 
 
   <!-- 
-    - custom js link
+    - #BACK TO TOP
   -->
+
+  <a href="#top" class="back-to-top" aria-label="back to top" data-back-top-btn>
+    <ion-icon name="arrow-up" aria-hidden="true"></ion-icon>
+  </a>
+
+
   <script src="./assets/js/script.js" defer></script>
 
   <!-- 
