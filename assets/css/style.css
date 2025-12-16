@@ -684,7 +684,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 /* Float Animation for Hero Image */
-.hero-banner img {
+/* .hero-banner img {
   animation: floatImage 6s ease-in-out infinite;
 }
 
@@ -698,7 +698,7 @@ body::-webkit-scrollbar-thumb {
   50% {
     transform: translateY(-20px);
   }
-}
+} */
 
 /* Optional: Glitch text effect or simple color Pulse for Name */
 .hero-content .name {
@@ -1686,6 +1686,7 @@ textarea.input-field {
     max-height: none;
     visibility: visible;
   }
+
 }
 
 
@@ -1772,4 +1773,357 @@ textarea.input-field {
 
 .bg-icon.float-circular {
   animation-name: float-circular;
+}
+
+/* ===================================
+   RESPONSIVE TABS & PORTFOLIO
+   =================================== */
+
+.tabs-section {
+  padding: var(--section-padding) 0;
+  background: linear-gradient(135deg, rgba(255, 107, 53, 0.03) 0%, rgba(255, 107, 53, 0.01) 100%);
+}
+
+.tabs-container {
+  margin-top: 3rem;
+}
+
+/* Tab Navigation Styles */
+.tabs-nav-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.tabs-nav {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50px;
+  border: 1px solid var(--light-gray);
+  backdrop-filter: blur(10px);
+}
+
+.tab-btn {
+  padding: 0.8rem 1.8rem;
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  font-family: var(--ff-poppins);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.3s ease;
+  border-radius: 40px;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.tab-btn:hover {
+  color: var(--theme-color);
+  transform: translateY(-2px);
+}
+
+.tab-btn.active {
+  background: var(--white);
+  color: var(--theme-color);
+  font-weight: 600;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.tab-indicator {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--theme-color);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Tab Content */
+.tabs-content-wrapper {
+  min-height: 500px;
+  animation: fadeInUp 0.5s ease;
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Portfolio Grid */
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.portfolio-card {
+  background: var(--white);
+  border-radius: var(--radius-10);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.portfolio-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card-image {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.portfolio-card:hover .card-image img {
+  transform: scale(1.1) rotate(2deg);
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.portfolio-card:hover .overlay {
+  opacity: 1;
+}
+
+.card-body {
+  padding: 1.8rem;
+  background: var(--white);
+}
+
+.card-body h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--title-color);
+  margin-bottom: 0.5rem;
+}
+
+.card-body p {
+  font-size: 0.9rem;
+  color: var(--text-color);
+  margin-bottom: 1rem;
+}
+
+.card-link {
+  display: inline-block;
+  color: var(--theme-color);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.card-link:hover {
+  transform: translateX(5px);
+  color: var(--title-color);
+}
+
+/* Responsive Design */
+
+/* Tablets - 768px and below */
+@media (max-width: 768px) {
+  .tabs-nav {
+    gap: 0.3rem;
+    padding: 0.4rem;
+  }
+
+  .tab-btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+  }
+
+  .card-image {
+    height: 200px;
+  }
+
+  .card-body {
+    padding: 1.2rem;
+  }
+
+  .card-body h3 {
+    font-size: 1.1rem;
+  }
+
+  .tabs-section {
+    padding: 60px 0;
+  }
+
+  .tabs-container {
+    margin-top: 2rem;
+  }
+
+  .tabs-nav-wrapper {
+    margin-bottom: 2rem;
+  }
+}
+
+/* Small Tablets & Large Phones - 640px and below */
+@media (max-width: 640px) {
+  .tabs-nav {
+    gap: 0.25rem;
+    padding: 0.35rem;
+  }
+
+  .tab-btn {
+    padding: 0.55rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .card-image {
+    height: 180px;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .card-body h3 {
+    font-size: 1rem;
+  }
+
+  .card-body p {
+    font-size: 0.85rem;
+  }
+
+  .card-link {
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile Phones - 480px and below */
+@media (max-width: 480px) {
+  .tabs-nav {
+    gap: 0.2rem;
+    padding: 0.3rem;
+    border-radius: 30px;
+  }
+
+  .tab-btn {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.8rem;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card-image {
+    height: 200px;
+  }
+
+  .card-body {
+    padding: 1rem;
+  }
+
+  .card-body h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .card-body p {
+    font-size: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .card-link {
+    font-size: 0.8rem;
+  }
+
+  .tabs-content-wrapper {
+    min-height: auto;
+  }
+
+  .tabs-section {
+    padding: 40px 0;
+  }
+
+  .tabs-container {
+    margin-top: 1.5rem;
+  }
+
+  .tabs-nav-wrapper {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Extra Small - 360px and below */
+@media (max-width: 360px) {
+  .tab-btn {
+    padding: 0.45rem 0.8rem;
+    font-size: 0.75rem;
+  }
+
+  .card-body h3 {
+    font-size: 0.95rem;
+  }
+
+  .tabs-nav {
+    gap: 0.1rem;
+  }
 }
