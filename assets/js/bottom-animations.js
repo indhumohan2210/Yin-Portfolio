@@ -122,12 +122,60 @@ const animateSocialLinks = () => {
   const socialLinks = document.querySelectorAll('.social-link, [data-social]');
   
   socialLinks.forEach((link, index) => {
+    // Staggered initial animation
+    link.style.animation = `social-link-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards`;
+    link.style.animationDelay = `${index * 0.1}s`;
+    link.style.opacity = '0';
+
+    // Hover animation
     link.addEventListener('mouseenter', function() {
-      this.style.animation = `bounce-bottom 0.6s ease-out`;
+      this.style.transform = 'scale(1.2) translateY(-5px)';
+      this.style.transition = 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      
+      // Add glow effect
+      const glow = document.createElement('span');
+      glow.className = 'social-link-glow';
+      glow.style.position = 'absolute';
+      glow.style.borderRadius = '50%';
+      glow.style.pointerEvents = 'none';
+      glow.style.width = '100%';
+      glow.style.height = '100%';
+      glow.style.background = 'rgba(255, 107, 53, 0.3)';
+      glow.style.animation = 'glow-pulse 0.6s ease-out';
+      this.style.position = 'relative';
+      this.appendChild(glow);
+      
+      setTimeout(() => glow.remove(), 600);
     });
 
-    link.addEventListener('animationend', function() {
-      this.style.animation = '';
+    // Hover out animation
+    link.addEventListener('mouseleave', function() {
+      this.style.transform = 'scale(1) translateY(0)';
+    });
+
+    // Click ripple effect
+    link.addEventListener('click', function(e) {
+      const ripple = document.createElement('span');
+      const rect = this.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = e.clientX - rect.left - size / 2;
+      const y = e.clientY - rect.top - size / 2;
+
+      ripple.style.position = 'absolute';
+      ripple.style.width = ripple.style.height = size + 'px';
+      ripple.style.left = x + 'px';
+      ripple.style.top = y + 'px';
+      ripple.style.background = 'rgba(255, 255, 255, 0.7)';
+      ripple.style.borderRadius = '50%';
+      ripple.style.pointerEvents = 'none';
+      ripple.style.animation = 'ripple-expand 0.6s ease-out';
+      ripple.style.zIndex = '10';
+      
+      this.style.position = 'relative';
+      this.style.overflow = 'hidden';
+      this.appendChild(ripple);
+      
+      setTimeout(() => ripple.remove(), 600);
     });
   });
 };
