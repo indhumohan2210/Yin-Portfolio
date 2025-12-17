@@ -299,7 +299,8 @@ body::-webkit-scrollbar-thumb {
 /*=============== CARD ===============*/
 .container {
   display: flex;
-  place-items: center;
+  flex-wrap: wrap;
+  align-items: center;
   margin-inline: 1.5rem;
   padding-block: .56rem;
 }
@@ -401,7 +402,7 @@ body::-webkit-scrollbar-thumb {
   margin-left: 20px;
   white-space: nowrap;
   display: inline-block;
- 
+
   border-radius: 5px;
   padding: 5px 1px;
   color: #fff;
@@ -415,7 +416,7 @@ body::-webkit-scrollbar-thumb {
 
 .card-one .info button:hover {
   background-color: var(--theme-color);
-  
+
   color: #fff;
   transform: scale(1.1);
 
@@ -427,7 +428,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .card-one .info button {
-  color:#fff;
+  color: #fff;
   padding: 6px 7px;
   font-weight: 500;
   font-size: 14px;
@@ -436,9 +437,8 @@ body::-webkit-scrollbar-thumb {
   transition: 0.5s all;
 }
 
-.card-one .info button:hover {
- 
-}
+.card-one .info button:hover {}
+
 /* Spotlight Border Effect via JS variables */
 .card-one::after {
   content: "";
@@ -507,7 +507,7 @@ body::-webkit-scrollbar-thumb {
 .logo {
   color: var(--black);
   font-family: var(--ff-poppins);
-  font-size: 1.8rem;
+  font-size: 3.8rem;
   line-height: 0.9;
   font-weight: var(--fw-700);
 }
@@ -1516,7 +1516,7 @@ textarea.input-field {
     border-radius: 60px;
     position: relative;
     overflow: hidden;
-    
+
   }
 
   .wheel {
@@ -1889,6 +1889,7 @@ textarea.input-field {
     opacity: 0;
     transform: translateY(10px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1900,6 +1901,7 @@ textarea.input-field {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1996,6 +1998,15 @@ textarea.input-field {
 
 /* Responsive Design */
 
+@media only screen and (max-width: 992px) {
+ html,
+ body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  
+ }
+}
+
 /* Tablets - 768px and below */
 @media (max-width: 768px) {
   .tabs-nav {
@@ -2059,11 +2070,13 @@ textarea.input-field {
   .card-image {
     height: 220px;
 
-  } 
+  }
+
   .card-body {
     padding: 1.5rem;
 
-}
+  }
+
   .card-body h3 {
     font-size: 1.2rem;
   }
